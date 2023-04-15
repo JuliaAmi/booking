@@ -13,8 +13,10 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.2",
+        "@tinymce/tinymce-vue": "^4.0.7",
         "@vitejs/plugin-vue": "^4.1.0",
         "@vue/server-renderer": "^3.2.47",
+        "nprogress": "^0.2.0",
         "vue": "^3.2.36",
         "vue-loader": "^17.0.1"
     }

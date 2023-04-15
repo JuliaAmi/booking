@@ -8,11 +8,6 @@ createServer(page =>
     createInertiaApp({
         page,
         render: renderToString,
-        // resolve: name => {
-        //     const pages = import.meta.glob('./Pages/**/*.vue')
-        //     return pages[`./Pages/${name}.vue`]()
-        // },
-
         resolve: (name) => {
             let parts = name.split('::');
 
