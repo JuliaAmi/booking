@@ -1,15 +1,11 @@
 import './bootstrap';
 
-import { createApp, h } from 'vue'
-import { createInertiaApp, Link, Head } from '@inertiajs/vue3'
+import { createApp, h } from 'vue';
+import { createInertiaApp, Link, Head, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import NProgress from 'nprogress';
 
 createInertiaApp({
-    // resolve: name => {
-    //     const pages = import.meta.glob('./Pages/**/*.vue')
-    //     return pages[`./Pages/${name}.vue`]()
-    // },
-
     resolve: (name) => {
         let parts = name.split('::');
 
@@ -27,3 +23,6 @@ createInertiaApp({
             .mount(el)
     },
 });
+
+router.on('start', () => NProgress.start());
+router.on('finish', () => NProgress.done());
