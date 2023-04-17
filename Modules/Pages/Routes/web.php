@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 
 use Modules\Pages\Http\Controllers\Admin\PagesController as AdminPagesController;
+use Modules\Pages\Http\Controllers\PagesController as GuestPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,11 @@ use Modules\Pages\Http\Controllers\Admin\PagesController as AdminPagesController
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::resource('pages', AdminPagesController::class);
+});
+
+Route::name('guest.')->group(function () {
+    Route::controller(GuestPagesController::class)->name('pages.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{slug}', 'show')->name('show');
+    });
 });

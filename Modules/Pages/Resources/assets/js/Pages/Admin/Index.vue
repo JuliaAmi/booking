@@ -4,7 +4,7 @@
     <inertia-link href="/admin/pages/create">Создать новую страницу</inertia-link>
 
     <div>
-        <table>
+        <table id="table" class="display" style="width: 100%;">
             <thead>
             <tr>
                 <th>ID</th>
@@ -17,32 +17,36 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="page in pages" :key="page.id">
-                <td>{{ page.id }}</td>
-                <td>{{ page.title }}</td>
-                <td>{{ page.slug }}</td>
-                <td>{{ page.is_active ? 'Активна' : 'Не активна' }}</td>
-                <td>{{ page.created_at }}</td>
-                <td>{{ page.updated_at }}</td>
-                <td>
-                    <inertia-link :href="`/admin/pages/${page.id}`">Просмотр</inertia-link>
-                    <inertia-link :href="`/admin/pages/${page.id}/edit`">Редактировать</inertia-link>
-                    <inertia-link method="delete" as="button" preserveState:false :href="`/admin/pages/${page.id}`">Удалить</inertia-link>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
 
-
-
 </template>
 
 <script>
+
+import replaceHtmlLinksToInertiaLinks from "@/helpers";
 export default {
     name: "Index",
-    props: {
-        pages: Array
+    mounted() {
+        $('#table').DataTable({
+            serverSide: true,
+            processing: true,
+            ajax: "/admin/pages",
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'title', name: 'title'},
+                {data: 'slug', name: 'slug'},
+                {data: 'is_active', name: 'is_active'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'updated_at', name: 'updated_at'},
+                {data: 'actions', name: 'actions', orderable: false},
+            ],
+            fnDrawCallback: function () {
+                replaceHtmlLinksToInertiaLinks('#table');
+            }
+        });
     }
+
 }
 </script>

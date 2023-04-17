@@ -16,6 +16,9 @@
         "@tinymce/tinymce-vue": "^4.0.7",
         "@vitejs/plugin-vue": "^4.1.0",
         "@vue/server-renderer": "^3.2.47",
+        "datatables.net": "^1.13.4",
+        "datatables.net-dt": "^1.13.4",
+        "jquery": "^3.6.4",
         "nprogress": "^0.2.0",
         "vue": "^3.2.36",
         "vue-loader": "^17.0.1"
