@@ -2,7 +2,7 @@
     <li v-for="item in menu">
 
         <template v-if="item.url !== ''">
-            <inertia-link :href="item.url" v-if="item.url.includes('booking')">
+            <inertia-link :href="item.url" v-if="item.url.includes('booking')" :class="{'active' : item.is_active}">
                 {{ item.title }}
             </inertia-link>
 
