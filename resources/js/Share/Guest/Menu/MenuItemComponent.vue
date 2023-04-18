@@ -11,6 +11,10 @@
             </a>
         </template>
 
+        <template v-else>
+            <span>{{ item.title }}</span>
+        </template>
+
         <ul v-if="item.children.length">
             <MenuItemComponent :menu="item.children"/>
         </ul>
