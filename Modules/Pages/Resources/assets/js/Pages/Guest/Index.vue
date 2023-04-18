@@ -3,7 +3,10 @@
 </template>
 
 <script>
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+
 export default {
-    name: "Index"
+    name: "Index",
+    layout: GuestLayout
 }
 </script>
