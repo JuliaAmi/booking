@@ -1,11 +1,17 @@
 <template>
+    <MenuComponent />
     <main>
         <slot></slot>
     </main>
 </template>
 
 <script>
+
+import MenuComponent from "@/Share/Admin/Menu/MenuComponent.vue";
 export default {
-    name: "AdminLayout"
+    name: "AdminLayout",
+    components: {
+        MenuComponent
+    }
 }
 </script>
