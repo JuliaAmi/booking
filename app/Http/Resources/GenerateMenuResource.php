@@ -13,7 +13,7 @@ class GenerateMenuResource extends JsonResource
             'title' => $this->title,
             'url'  => $this->url(),
             'is_active' => $this->isActive,
-            'children' => $this->children()
+            'children' => GenerateMenuResource::collection($this->children())
         ];
     }
 }

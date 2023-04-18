@@ -17,6 +17,6 @@ class MenuTableSeeder extends Seeder
     {
         Model::unguard();
 
-        Menu::factory(10)->create();
+        Menu::factory(4)->create();
     }
 }

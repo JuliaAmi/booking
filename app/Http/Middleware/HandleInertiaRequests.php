@@ -19,7 +19,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'menu' => GenerateMenuResource::collection(Menu::get('menu')->all())
+            'menu' => GenerateMenuResource::collection(Menu::get('menu')->roots())
         ]);
     }
 }
