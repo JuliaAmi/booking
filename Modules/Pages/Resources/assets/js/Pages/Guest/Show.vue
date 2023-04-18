@@ -8,17 +8,21 @@
 
     <h1>{{ page.title }}</h1>
 
-    <div v-html="page.content"></div>
+    <div v-html="page.content" id="content"></div>
 </template>
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
+import replaceHtmlLinksToInertiaLinks from "../../../../../../../resources/js/helpers";
 
 export default {
     name: "Show",
     layout: GuestLayout,
     props: {
         page: Object
+    },
+    mounted() {
+        replaceHtmlLinksToInertiaLinks('#content')
     }
 }
 </script>
