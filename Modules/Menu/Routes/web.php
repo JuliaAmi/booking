@@ -17,6 +17,7 @@ Route::name('admin.')->prefix('admin')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
         Route::get('/create', 'create')->name('create');
+        Route::post('/rebuild', 'rebuild')->name('rebuild');
         Route::get('/{id}/edit', 'edit')->name('edit');
         Route::patch('/{id}', 'update')->name('update');
         Route::delete('/{id}', 'destroy')->name('destroy');

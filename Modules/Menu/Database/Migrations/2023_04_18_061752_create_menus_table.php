@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->boolean('is_active')->default(1);
             $table->integer('sort')->default(1);
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->nestedSet();
             $table->timestamps();
         });
     }

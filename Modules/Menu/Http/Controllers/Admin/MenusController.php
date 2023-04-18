@@ -2,12 +2,14 @@
 
 namespace Modules\Menu\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Inertia\Inertia;
 use Modules\Menu\Actions\AdminCreateMenu;
 use Modules\Menu\Actions\AdminDeleteMenu;
 use Modules\Menu\Actions\AdminFindMenuByID;
-use Modules\Menu\Actions\AdminGetAllMenus;
+use Modules\Menu\Actions\AdminGetNodeTreeMenus;
+use Modules\Menu\Actions\AdminRebuildMenus;
 use Modules\Menu\Actions\AdminUpdateMenu;
 use Modules\Menu\Http\Requests\CreateMenuRequest;
 use Modules\Menu\Http\Requests\UpdateMenuRequest;
@@ -16,7 +18,7 @@ class MenusController extends Controller
 {
     public function index()
     {
-        $menus = app(AdminGetAllMenus::class)->run();
+        $menus = app(AdminGetNodeTreeMenus::class)->run();
         return Inertia::render('Menu::Admin/Index', compact('menus'));
     }
 
@@ -47,5 +49,11 @@ class MenusController extends Controller
     {
         app(AdminDeleteMenu::class)->run($id);
         return redirect()->route('admin.menus.index');
+    }
+
+    public function rebuild(Request $request)
+    {
+        app(AdminRebuildMenus::class)->run($request->menu);
+        return response('Дерево перестроено.');
     }
 }

@@ -2,13 +2,14 @@
 
 namespace Modules\Menu\Models;
 
+use Kalnoy\Nestedset\NodeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Menu\Database\factories\MenuFactory;
 
 class Menu extends Model
 {
-    use HasFactory;
+    use HasFactory, NodeTrait;
 
     protected $fillable = [
         'title',
