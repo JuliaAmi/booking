@@ -1,12 +1,19 @@
 <template>
-    <li v-for="item in menu" :key="item.id">
+    <li v-for="item in menu">
 
-        <ul v-if="item.children?.length">
+        <template v-if="item.url !== ''">
+            <inertia-link :href="item.url" v-if="item.url.includes('booking')">
+                {{ item.title }}
+            </inertia-link>
+
+            <a :href="item.url" target="_blank" v-else>
+                {{ item.title }}
+            </a>
+        </template>
+
+        <ul v-if="item.children.length">
             <MenuItemComponent :menu="item.children"/>
         </ul>
-        <inertia-link :href="item.url" :class="{'active' : item.is_active}">
-            {{ item.title }}
-        </inertia-link>
     </li>
 </template>
 
@@ -15,7 +22,10 @@
 export default {
     name: "MenuItemComponent",
     props: {
-        menu: Array
+        menu: {
+            type: Array,
+            default: () => []
+        }
     }
 }
 </script>
