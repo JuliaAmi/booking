@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Menu\Database\Seeders\MenuTableSeeder;
 use Modules\Pages\Database\Seeders\PagesTableSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            PagesTableSeeder::class
+            PagesTableSeeder::class,
+            MenuTableSeeder::class
         ]);
     }
 }

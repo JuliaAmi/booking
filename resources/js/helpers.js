@@ -1,6 +1,8 @@
 import {router} from "@inertiajs/vue3";
 
-export default function replaceHtmlLinksToInertiaLinks(target) {
+
+
+function replaceHtmlLinksToInertiaLinks(target) {
     const links = $(target).find('a');
 
     Array.from(links).forEach(link => {
@@ -17,3 +19,5 @@ export default function replaceHtmlLinksToInertiaLinks(target) {
         })
     });
 }
+
+export default replaceHtmlLinksToInertiaLinks
