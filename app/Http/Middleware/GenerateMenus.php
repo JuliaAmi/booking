@@ -13,6 +13,7 @@ class GenerateMenus
         if ($request->routeIs('admin.*')) {
             Menu::make('menu', function ($menu) {
                 $menu->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
+                $menu->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
                 $menu->add('Вернуться к сайту', route('guest.pages.index'));
             });
         } else {
