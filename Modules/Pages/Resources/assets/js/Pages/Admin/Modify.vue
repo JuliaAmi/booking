@@ -42,9 +42,11 @@
 <script>
 import {useForm} from "@inertiajs/vue3";
 import TinyEditor from "../../../../../../../resources/js/Share/TinyEditor.vue";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
 
 export default {
     name: "Modify",
+    layout: AdminLayout,
     components: {
         TinyEditor
     },

@@ -12,8 +12,11 @@
 </template>
 
 <script>
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+
 export default {
     name: "Show",
+    layout: GuestLayout,
     props: {
         page: Object
     }

@@ -6,8 +6,11 @@
 </template>
 
 <script>
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
 export default {
     name: "Show",
+    layout: AdminLayout,
     props: {
         page: Object
     }

@@ -26,8 +26,10 @@
 <script>
 
 import replaceHtmlLinksToInertiaLinks from "@/helpers";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
 export default {
     name: "Index",
+    layout: AdminLayout,
     mounted() {
         $('#table').DataTable({
             serverSide: true,
@@ -47,6 +49,5 @@ export default {
             }
         });
     }
-
 }
 </script>
