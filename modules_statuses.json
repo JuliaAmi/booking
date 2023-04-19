@@ -1,5 +1,6 @@
 {
     "Pages": true,
     "Menu": true,
-    "Dashboard": true
+    "Dashboard": true,
+    "Roles": true
 }

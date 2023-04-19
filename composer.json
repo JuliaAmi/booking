@@ -15,6 +15,7 @@
         "laravel/ui": "^4.2",
         "lavary/laravel-menu": "^1.8",
         "nwidart/laravel-modules": "^9.0",
+        "spatie/laravel-permission": "^5.10",
         "spatie/laravel-sluggable": "^3.4",
         "yajra/laravel-datatables": "^9.0"
     },
