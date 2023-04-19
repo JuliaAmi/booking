@@ -25,6 +25,7 @@ class GenerateMenus
         Menu::make('menu', function ($menu) {
             $menu->add('Главаня', route('guest.pages.index'));
             app(BuildMenusFromDataBase::class)->run($menu);
+            $menu->add('Панель управления', route('admin.index'));
         });
     }
 
