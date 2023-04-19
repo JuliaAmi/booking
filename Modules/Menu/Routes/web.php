@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Modules\Menu\Http\Controllers\Admin\MenusController as AdminMenusController;
 /*
 |--------------------------------------------------------------------------

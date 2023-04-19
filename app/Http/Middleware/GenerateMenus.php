@@ -12,7 +12,7 @@ class GenerateMenus
     public function buildAdminMenu()
     {
         Menu::make('menu', function ($menu) {
-            $menu->add('Панель управления', ['disableActivationByURL' => 'true'])->nickname('dashboard');
+            $menu->add('Панель управления', route('admin.index'))->nickname('dashboard');
             $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
             $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
             $menu->add('Вернуться к сайту', route('guest.pages.index'));
