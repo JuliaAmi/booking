@@ -1,6 +1,6 @@
 import {router} from "@inertiajs/vue3";
 
-function replaceHtmlLinksToInertiaLinks(target) {
+export function replaceHtmlLinksToInertiaLinks(target) {
     const links = $(target).find('a');
 
     Array.from(links).forEach(link => {
@@ -8,7 +8,7 @@ function replaceHtmlLinksToInertiaLinks(target) {
 
             const url = e.target.href;
 
-            if (url.includes('booking')) {
+            if (checkIsInternalURL(url)) {
                 e.preventDefault();
                 if (e.target.getAttribute('data-method')) {
                     router.delete(url, {preserveState: false});
@@ -22,4 +22,7 @@ function replaceHtmlLinksToInertiaLinks(target) {
     });
 }
 
-export default replaceHtmlLinksToInertiaLinks
+export function checkIsInternalURL(url)
+{
+    return url.includes(import.meta.env.VITE_APP_URL);
+}

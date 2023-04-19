@@ -5,7 +5,12 @@ import { createInertiaApp, Link, Head, router } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import NProgress from 'nprogress';
 
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || import.meta.env.VITE_APP_NAME;
+
 createInertiaApp({
+
+    title: (title) => `${appName}` + (title ? ` - ${title} ` : ''),
+
     resolve: (name) => {
         let parts = name.split('::');
 
