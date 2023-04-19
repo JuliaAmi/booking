@@ -2,5 +2,6 @@
     "Pages": true,
     "Menu": true,
     "Dashboard": true,
-    "Roles": true
+    "Roles": true,
+    "Users": true
 }
