@@ -13,7 +13,7 @@
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import replaceHtmlLinksToInertiaLinks from "../../../../../../../resources/js/helpers";
+import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 
 export default {
     name: "Show",
