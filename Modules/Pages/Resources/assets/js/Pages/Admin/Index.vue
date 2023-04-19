@@ -25,7 +25,7 @@
 
 <script>
 
-import replaceHtmlLinksToInertiaLinks from "@/helpers";
+import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 export default {
     name: "Index",

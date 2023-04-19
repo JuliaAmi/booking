@@ -2,7 +2,7 @@
     <li v-for="item in menu">
 
         <template v-if="item.url !== ''">
-            <inertia-link :href="item.url" v-if="item.url.includes('booking')" :class="{'active' : item.is_active}">
+            <inertia-link :href="item.url" v-if="checkIsInternalURL(item.url)" :class="{'active' : item.is_active}">
                 {{ item.title }}
             </inertia-link>
 
@@ -22,13 +22,18 @@
 </template>
 
 <script>
-
+import {checkIsInternalURL} from "@/helpers";
 export default {
     name: "MenuItemComponent",
     props: {
         menu: {
             type: Array,
             default: () => []
+        }
+    },
+    methods: {
+        checkIsInternalURL(url) {
+            return checkIsInternalURL(url);
         }
     }
 }
