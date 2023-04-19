@@ -13,6 +13,6 @@ use Modules\Dashboard\Http\Controllers\Admin\DashboardController as AdminDashboa
 |
 */
 
-Route::name('admin.')->prefix('admin')->group(function() {
+Route::name('admin.')->prefix('admin')->middleware('auth')->group(function() {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('index');
 });

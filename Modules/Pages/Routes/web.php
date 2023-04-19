@@ -14,7 +14,7 @@ use Modules\Pages\Http\Controllers\PagesController as GuestPagesController;
 |
 */
 
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::resource('pages', AdminPagesController::class);
 });
 

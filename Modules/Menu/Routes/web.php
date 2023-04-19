@@ -13,7 +13,7 @@ use Modules\Menu\Http\Controllers\Admin\MenusController as AdminMenusController;
 |
 */
 
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::controller(AdminMenusController::class)->name('menus.')->prefix('menus')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
