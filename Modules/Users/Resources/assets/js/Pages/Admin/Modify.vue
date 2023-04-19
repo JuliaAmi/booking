@@ -32,7 +32,7 @@
         <div v-if="roles?.length">
             <h3>Роли пользователя</h3>
             <select id="roles" v-model="form.roles" multiple size="10" style="width: 25%;">
-                <option :value="role.id" v-for="role in roles" :key="role.id">{{ role.name }}</option>
+                <option :value="role.name" v-for="role in roles" :key="role.id">{{ role.name }}</option>
             </select>
         </div>
 
@@ -53,7 +53,8 @@ export default {
     layout: AdminLayout,
     props: {
         user: Object,
-        roles: Array
+        roles: Array,
+        userRoles: Array
     },
     data() {
         return {
@@ -62,7 +63,7 @@ export default {
                 email: this.user ? this.user.email : '',
                 password: '',
                 password_confirmation: '',
-                roles: []
+                roles: this.userRoles ? this.userRoles : []
             })
         }
     },
