@@ -26,3 +26,8 @@ export function checkIsInternalURL(url)
 {
     return url.includes(import.meta.env.VITE_APP_URL);
 }
+
+export function wrapTables(target, wrapClass="table-wrapper")
+{
+    $(`${target} table`).wrap('<div class="'+wrapClass+'"></div>');
+}
