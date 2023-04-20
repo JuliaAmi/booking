@@ -1,7 +1,9 @@
 <template>
     <h1>Управление страницами</h1>
 
-    <inertia-link href="/admin/pages/create">Создать новую страницу</inertia-link>
+    <inertia-link href="/admin/pages/create" v-if="$page.props.authUser.permissions.includes('pages-create')">
+        Создать новую страницу
+    </inertia-link>
 
     <div>
         <table id="table" class="display" style="width: 100%;">

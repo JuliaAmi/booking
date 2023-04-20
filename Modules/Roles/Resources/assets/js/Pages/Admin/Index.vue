@@ -1,7 +1,9 @@
 <template>
     <h1>Управление ролями</h1>
 
-    <inertia-link href="/admin/roles/create">Создать новую роль</inertia-link>
+    <inertia-link href="/admin/roles/create" v-if="$page.props.authUser.permissions.includes('roles-create')">
+        Создать новую роль
+    </inertia-link>
 
     <div>
         <table id="table" class="display" style="width: 100%;">
