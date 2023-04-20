@@ -1,8 +1,9 @@
 <template>
     <h1>Управление меню сайта</h1>
 
-
-    <inertia-link href="/admin/menus/create">Создать пункт меню</inertia-link>
+    <inertia-link href="/admin/menus/create" v-if="$page.props.authUser.permissions.includes('menu-create')">
+        Создать пункт меню
+    </inertia-link>
 
     <NestedDraggable
         @sort="rebuildTree"

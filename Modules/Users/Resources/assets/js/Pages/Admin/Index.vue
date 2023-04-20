@@ -1,7 +1,9 @@
 <template>
     <h1>Управление пользовтелями</h1>
 
-    <inertia-link href="/admin/users/create">Создать нового пользователя</inertia-link>
+    <inertia-link href="/admin/users/create" v-if="$page.props.authUser.permissions.includes('users-create')">
+        Создать нового пользователя
+    </inertia-link>
 
     <div>
         <table id="table" class="display" style="width: 100%;">
