@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use App\Http\Resources\GenerateMenuResource;
 use Menu;
 use Illuminate\Http\Request;
@@ -21,7 +20,11 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'menu' => GenerateMenuResource::collection(Menu::get('menu')->roots()),
-            'authUser' => Auth::user()?->only(['name', 'email'])
+            'authUser' => auth()->check() ? [
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'permissions' => auth()->user()->getAllPermissions()->pluck('name')
+            ] : null,
         ]);
     }
 }
