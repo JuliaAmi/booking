@@ -17,13 +17,13 @@ use Modules\Pages\Http\Controllers\PagesController as GuestPagesController;
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
 
     Route::controller(AdminPagesController::class)->name('pages.')->prefix('pages')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{id}', 'show')->name('show');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->middleware(['permission:pages-read'])->name('index');
+        Route::get('/create', 'create')->middleware(['permission:pages-create'])->name('create');
+        Route::post('/', 'store')->middleware(['permission:pages-create'])->name('store');
+        Route::get('/{id}', 'show')->middleware(['permission:pages-read'])->name('show');
+        Route::get('/{id}/edit', 'edit')->middleware(['permission:pages-update'])->name('edit');
+        Route::patch('/{id}', 'update')->middleware(['permission:pages-update'])->name('update');
+        Route::delete('/{id}', 'destroy')->middleware(['permission:pages-delete'])->name('destroy');
     });
 });
 

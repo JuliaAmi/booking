@@ -16,11 +16,11 @@ use Modules\Roles\Http\Controllers\Admin\RolesController as AdminRolesController
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::controller(AdminRolesController::class)->name('roles.')->prefix('roles')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->middleware(['permission:roles-read'])->name('index');
+        Route::get('/create', 'create')->middleware(['permission:roles-create'])->name('create');
+        Route::post('/', 'store')->middleware(['permission:roles-create'])->name('store');
+        Route::get('/{id}/edit', 'edit')->middleware(['permission:roles-update'])->name('edit');
+        Route::patch('/{id}', 'update')->middleware(['permission:roles-update'])->name('update');
+        Route::delete('/{id}', 'destroy')->middleware(['permission:roles-delete'])->name('destroy');
     });
 });

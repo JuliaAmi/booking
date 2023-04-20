@@ -15,11 +15,11 @@ use Modules\Users\Http\Controllers\Admin\UsersController as AdminUsersController
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::controller(AdminUsersController::class)->name('users.')->prefix('users')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/', 'store')->name('store');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->middleware(['permission:users-read'])->name('index');
+        Route::get('/create', 'create')->middleware(['permission:users-create'])->name('create');
+        Route::post('/', 'store')->middleware(['permission:users-create'])->name('store');
+        Route::get('/{id}/edit', 'edit')->middleware(['permission:users-update'])->name('edit');
+        Route::patch('/{id}', 'update')->middleware(['permission:users-update'])->name('update');
+        Route::delete('/{id}', 'destroy')->middleware(['permission:users-delete'])->name('destroy');
     });
 });

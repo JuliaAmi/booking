@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Menu;
 use Closure;
 use Illuminate\Http\Request;
@@ -11,13 +12,30 @@ class GenerateMenus
 {
     public function buildAdminMenu()
     {
-        Menu::make('menu', function ($menu) {
-            $menu->add('Панель управления', route('admin.index'))->nickname('dashboard');
-            $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
-            $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
-            $menu->item('dashboard')->add('Управление ролями', route('admin.roles.index'))->active('admin/roles/*');
-            $menu->item('dashboard')->add('Управление пользователями', route('admin.users.index'))->active('admin/users/*');
-            $menu->add('Вернуться к сайту', route('guest.pages.index'));
+        $user = Auth::user();
+
+        Menu::make('menu', function ($menu) use ($user) {
+            if (!empty($user)) {
+                $menu->add('Панель управления', route('admin.index'))->nickname('dashboard');
+
+                if ($user->hasPermissionTo('pages-read')) {
+                    $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
+                }
+
+                if ($user->hasPermissionTo('menu-read')) {
+                    $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
+                }
+
+                if ($user->hasPermissionTo('roles-read')) {
+                    $menu->item('dashboard')->add('Управление ролями', route('admin.roles.index'))->active('admin/roles/*');
+                }
+
+                if ($user->hasPermissionTo('users-read')) {
+                    $menu->item('dashboard')->add('Управление пользователями', route('admin.users.index'))->active('admin/users/*');
+                }
+
+                $menu->add('Вернуться к сайту', route('guest.pages.index'));
+            }
         });
     }
 
