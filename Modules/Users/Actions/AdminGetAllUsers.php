@@ -27,8 +27,8 @@ class AdminGetAllUsers extends BaseAction
             })
             ->addColumn('actions', function ($item) {
 
-                $editLink = '<a href="/admin/users/'.$item->id.'/edit">Редактировать</a>';
-                $deleteLink = '<a href="/admin/users/'.$item->id.'" data-method="delete">Удалить</a>';
+                $editLink = auth()->user()->hasPermissionTo('users-update') ? '<a href="/admin/users/'.$item->id.'/edit">Редактировать</a>' : '';
+                $deleteLink = auth()->user()->hasPermissionTo('users-delete') ? '<a href="/admin/users/'.$item->id.'" data-method="delete">Удалить</a>' : '';
 
                 return $editLink.' '.$deleteLink;
             })

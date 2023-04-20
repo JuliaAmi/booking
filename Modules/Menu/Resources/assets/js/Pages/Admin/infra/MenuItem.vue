@@ -7,10 +7,10 @@
                 <div>{{ menuItem.url }}</div>
             </div>
             <div>
-                <inertia-link :href="`/admin/menus/${menuItem.id}/edit`">
+                <inertia-link :href="`/admin/menus/${menuItem.id}/edit`" v-if="$page.props.authUser.permissions.includes('menu-update')">
                     Редактировать
                 </inertia-link>
-                <inertia-link :href="`/admin/menus/${menuItem.id}`" as="button" method="delete" :preserveState="false">
+                <inertia-link :href="`/admin/menus/${menuItem.id}`" as="button" method="delete" :preserveState="false" v-if="$page.props.authUser.permissions.includes('menu-delete')">
                     Удалить
                 </inertia-link>
             </div>
