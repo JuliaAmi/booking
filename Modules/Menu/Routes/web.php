@@ -15,12 +15,12 @@ use Modules\Menu\Http\Controllers\Admin\MenusController as AdminMenusController;
 
 Route::name('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::controller(AdminMenusController::class)->name('menus.')->prefix('menus')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::post('/', 'store')->name('store');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/rebuild', 'rebuild')->name('rebuild');
-        Route::get('/{id}/edit', 'edit')->name('edit');
-        Route::patch('/{id}', 'update')->name('update');
-        Route::delete('/{id}', 'destroy')->name('destroy');
+        Route::get('/', 'index')->middleware(['permission:menu-read'])->name('index');
+        Route::post('/', 'store')->middleware(['permission:menu-create'])->name('store');
+        Route::get('/create', 'create')->middleware(['permission:menu-create'])->name('create');
+        Route::post('/rebuild', 'rebuild')->middleware(['permission:menu-update'])->name('rebuild');
+        Route::get('/{id}/edit', 'edit')->middleware(['permission:menu-update'])->name('edit');
+        Route::patch('/{id}', 'update')->middleware(['permission:menu-update'])->name('update');
+        Route::delete('/{id}', 'destroy')->middleware(['permission:menu-delete'])->name('destroy');
     });
 });
