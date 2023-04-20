@@ -26,8 +26,8 @@ class AdminGetAllRoles extends BaseAction
             })
             ->addColumn('actions', function ($item) {
 
-                $editLink = '<a href="/admin/roles/'.$item->id.'/edit">Редактировать</a>';
-                $deleteLink = '<a href="/admin/roles/'.$item->id.'" data-method="delete">Удалить</a>';
+                $editLink =  auth()->user()->hasPermissionTo('roles-update') ? '<a href="/admin/roles/'.$item->id.'/edit">Редактировать</a>' : '';
+                $deleteLink = auth()->user()->hasPermissionTo('roles-delete') ? '<a href="/admin/roles/'.$item->id.'" data-method="delete">Удалить</a>' : '';
 
                 return $editLink.' '.$deleteLink;
             })
