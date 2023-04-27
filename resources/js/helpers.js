@@ -1,5 +1,5 @@
 import {router} from "@inertiajs/vue3";
-
+import Zooming from "zooming";
 export function replaceHtmlLinksToInertiaLinks(target) {
     const links = $(target).find('a');
 
@@ -25,6 +25,11 @@ export function replaceHtmlLinksToInertiaLinks(target) {
 export function checkIsInternalURL(url)
 {
     return (url.includes(import.meta.env.VITE_APP_URL) && !url.includes('storage'));
+}
+
+export function zoomImages()
+{
+    new Zooming().listen('img');
 }
 
 export function wrapTables(target, wrapClass="table-wrapper")

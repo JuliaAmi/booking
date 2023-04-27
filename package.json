@@ -22,6 +22,7 @@
         "nprogress": "^0.2.0",
         "vue": "^3.2.36",
         "vue-draggable-next": "^2.1.1",
-        "vue-loader": "^17.0.1"
+        "vue-loader": "^17.0.1",
+        "zooming": "^2.1.1"
     }
 }
