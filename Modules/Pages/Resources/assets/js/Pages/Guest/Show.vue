@@ -13,7 +13,8 @@
 
 <script>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import {replaceHtmlLinksToInertiaLinks, wrapTables} from "@/helpers";
+import {replaceHtmlLinksToInertiaLinks, wrapTables, zoomImages} from "@/helpers";
+
 
 export default {
     name: "Show",
@@ -24,6 +25,7 @@ export default {
     mounted() {
         replaceHtmlLinksToInertiaLinks('#content');
         wrapTables('#content');
+        zoomImages();
     }
 }
 </script>
