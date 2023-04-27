@@ -32,7 +32,7 @@ class AdminGetAllPages extends BaseAction
 
                 $showLink = auth()->user()->hasPermissionTo('pages-read') ? '<a href="/admin/pages/'.$item->id.'">Просмотр</a>' : '';
                 $editLink = auth()->user()->hasPermissionTo('pages-update') ? '<a href="/admin/pages/'.$item->id.'/edit">Редактировать</a>' : '';
-                $deleteLink = auth()->user()->hasPermissionTo('pages-delete') ?'<a href="/admin/pages/'.$item->id.'/destroy" data-method="delete">Удалить</a>' : '';
+                $deleteLink = auth()->user()->hasPermissionTo('pages-delete') ?'<a href="/admin/pages/'.$item->id.'" data-method="delete">Удалить</a>' : '';
 
                 return $showLink.' '.$editLink.' '.$deleteLink;
             })
