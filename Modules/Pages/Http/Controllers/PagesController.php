@@ -10,13 +10,13 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Pages::Guest/Index');
+        return Inertia::render('Pages::Guest/GuestPagesIndex');
     }
 
     public function show($slug)
     {
         $page = app(FindPageBySlug::class)->run($slug);
-        return Inertia::render('Pages::Guest/Show', compact('page'));
+        return Inertia::render('Pages::Guest/GuestPagesShow', compact('page'));
     }
 
 }

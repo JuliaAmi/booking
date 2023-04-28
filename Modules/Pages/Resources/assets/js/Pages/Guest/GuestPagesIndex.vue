@@ -6,7 +6,7 @@
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 
 export default {
-    name: "Index",
+    name: "GuestPagesIndex",
     layout: GuestLayout
 }
 </script>

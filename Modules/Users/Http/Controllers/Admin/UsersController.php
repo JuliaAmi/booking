@@ -22,13 +22,13 @@ class UsersController extends Controller
             return app(AdminGetAllUsers::class)->run();
         }
 
-        return Inertia::render('Users::Admin/Index');
+        return Inertia::render('Users::Admin/AdminUsersIndex');
     }
 
     public function create()
     {
         $roles = app(AdminGetAllRolesForUser::class)->run();
-        return Inertia::render('Users::Admin/Modify', compact('roles'));
+        return Inertia::render('Users::Admin/AdminUsersModify', compact('roles'));
     }
 
     public function store(CreateUserRequest $request)
@@ -43,7 +43,7 @@ class UsersController extends Controller
         $roles = app(AdminGetAllRolesForUser::class)->run();
         $userRoles = $user->roles->pluck('name');
 
-        return Inertia::render('Users::Admin/Modify', compact('user','roles', 'userRoles'));
+        return Inertia::render('Users::Admin/AdminUsersModify', compact('user','roles', 'userRoles'));
     }
 
     public function update(UpdateUserRequest $request, $id)

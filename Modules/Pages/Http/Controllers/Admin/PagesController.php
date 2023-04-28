@@ -23,12 +23,12 @@ class PagesController extends Controller
             return app(AdminGetAllPages::class)->run();
         }
 
-        return Inertia::render('Pages::Admin/Index');
+        return Inertia::render('Pages::Admin/AdminPagesIndex');
     }
 
     public function create(): Response
     {
-        return Inertia::render('Pages::Admin/Modify');
+        return Inertia::render('Pages::Admin/AdminPagesModify');
     }
 
     public function store(CreatePageRequest $request): RedirectResponse
@@ -40,13 +40,13 @@ class PagesController extends Controller
     public function show($id): Response
     {
         $page = app(AdminFindPageByID::class)->run($id);
-        return Inertia::render('Pages::Admin/Show', compact('page'));
+        return Inertia::render('Pages::Admin/AdminPagesShow', compact('page'));
     }
 
     public function edit($id): Response
     {
         $page = app(AdminFindPageByID::class)->run($id);
-        return Inertia::render('Pages::Admin/Modify', compact('page'));
+        return Inertia::render('Pages::Admin/AdminPagesModify', compact('page'));
     }
 
     public function update(UpdatePageRequest $request, $id): RedirectResponse

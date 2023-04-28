@@ -10,7 +10,7 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 
 export default {
-    name: "Show",
+    name: "AdminPagesShow",
     layout: AdminLayout,
     props: {
         page: Object

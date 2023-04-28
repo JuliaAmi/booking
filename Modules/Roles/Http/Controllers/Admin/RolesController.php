@@ -22,13 +22,13 @@ class RolesController extends Controller
             return app(AdminGetAllRoles::class)->run();
         }
 
-        return Inertia::render('Roles::Admin/Index');
+        return Inertia::render('Roles::Admin/AdminRolesIndex');
     }
 
     public function create()
     {
         $permissions = app(AdminGetAllPermissions::class)->run();
-        return Inertia::render('Roles::Admin/Modify', compact('permissions'));
+        return Inertia::render('Roles::Admin/AdminRolesModify', compact('permissions'));
     }
 
     public function store(CreateRoleRequest $request)
@@ -43,7 +43,7 @@ class RolesController extends Controller
         $permissions = app(AdminGetAllPermissions::class)->run();
         $rolePermissions = $role->permissions->pluck('id');
 
-        return Inertia::render('Roles::Admin/Modify', compact('role', 'permissions', 'rolePermissions'));
+        return Inertia::render('Roles::Admin/AdminRolesModify', compact('role', 'permissions', 'rolePermissions'));
     }
 
     public function update(UpdateRoleRequest $request, $id)

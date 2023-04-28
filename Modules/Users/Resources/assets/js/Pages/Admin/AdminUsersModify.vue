@@ -49,7 +49,7 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import {useForm} from "@inertiajs/vue3";
 
 export default {
-    name: "Modify",
+    name: "AdminUsersModify",
     layout: AdminLayout,
     props: {
         user: Object,
