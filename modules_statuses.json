@@ -3,5 +3,6 @@
     "Menu": true,
     "Dashboard": true,
     "Roles": true,
-    "Users": true
+    "Users": true,
+    "Promos": true
 }

@@ -20,4 +20,9 @@ trait FileTrait
             'location' => $location
         ];
     }
+
+    public function delete($path)
+    {
+        Storage::disk('public')->delete($path);
+    }
 }
