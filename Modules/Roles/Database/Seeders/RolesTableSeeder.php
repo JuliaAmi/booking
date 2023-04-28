@@ -86,6 +86,22 @@ class RolesTableSeeder extends Seeder
                 'name' => 'users-delete',
                 'module' => 'Users'
             ],
+            [
+                'name' => 'promos-read',
+                'module' => 'Promos'
+            ],
+            [
+                'name' => 'promos-create',
+                'module' => 'Promos'
+            ],
+            [
+                'name' => 'promos-update',
+                'module' => 'Promos'
+            ],
+            [
+                'name' => 'promos-delete',
+                'module' => 'Promos'
+            ],
         ];
 
         foreach ($permissions as $permission) {
@@ -94,5 +110,8 @@ class RolesTableSeeder extends Seeder
 
         $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo(Permission::all());
+
+        $user = User::find(1);
+        $user->assignRole('Admin');
     }
 }

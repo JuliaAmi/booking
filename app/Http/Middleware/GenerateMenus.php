@@ -19,6 +19,10 @@ class GenerateMenus
                     $menu->item('dashboard')->add('Управление cтраницами сайта', route('admin.pages.index'))->active('admin/pages/*');
                 }
 
+                if (auth()->user()->hasPermissionTo('promos-read')) {
+                    $menu->item('dashboard')->add('Управление акциями', route('admin.promos.index'))->active('admin/promos/*');
+                }
+
                 if (auth()->user()->hasPermissionTo('menu-read')) {
                     $menu->item('dashboard')->add('Управление навигацией сайта', route('admin.menus.index'))->active('admin/menus/*');
                 }

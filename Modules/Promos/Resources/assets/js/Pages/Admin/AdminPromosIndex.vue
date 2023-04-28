@@ -1,8 +1,8 @@
 <template>
-    <h1>Управление страницами</h1>
+    <h1>Управление акциями</h1>
 
-    <inertia-link href="/admin/pages/create" v-if="$page.props.authUser.permissions.includes('pages-create')">
-        Создать новую страницу
+    <inertia-link href="/admin/promos/create" v-if="$page.props.authUser.permissions.includes('promos-create')">
+        Создать новую акцию
     </inertia-link>
 
     <div>
@@ -11,7 +11,8 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
-                <th>Slug</th>
+                <th>Cсылка</th>
+                <th>Изображение</th>
                 <th>Статус</th>
                 <th>Создана</th>
                 <th>Обновлена</th>
@@ -26,22 +27,23 @@
 </template>
 
 <script>
-
-import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
+import {replaceHtmlLinksToInertiaLinks, zoomImages} from "@/helpers";
 
 export default {
-    name: "AdminPagesIndex",
+    name: "AdminPromosIndex",
     layout: AdminLayout,
     mounted() {
+        $(function () {
             $('#table').DataTable({
                 serverSide: true,
                 processing: true,
-                ajax: "/admin/pages",
+                ajax: "/admin/promos",
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'title', name: 'title'},
-                    {data: 'slug', name: 'slug'},
+                    {data: 'url', name: 'url'},
+                    {data: 'img', name: 'img', orderable: false},
                     {data: 'is_active', name: 'is_active'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'updated_at', name: 'updated_at'},
@@ -49,9 +51,10 @@ export default {
                 ],
                 fnDrawCallback: function () {
                     replaceHtmlLinksToInertiaLinks('#table');
+                    zoomImages();
                 }
             });
-
+        });
     }
 }
 </script>
