@@ -19,12 +19,12 @@ class MenusController extends Controller
     public function index()
     {
         $menus = app(AdminGetNodeTreeMenus::class)->run();
-        return Inertia::render('Menu::Admin/Index', compact('menus'));
+        return Inertia::render('Menu::Admin/AdminMenuIndex', compact('menus'));
     }
 
     public function create()
     {
-        return Inertia::render('Menu::Admin/Modify');
+        return Inertia::render('Menu::Admin/AdminMenuModify');
     }
 
     public function store(CreateMenuRequest $request)
@@ -36,7 +36,7 @@ class MenusController extends Controller
     public function edit($id)
     {
         $menuItem = app(AdminFindMenuByID::class)->run($id);
-        return Inertia::render('Menu::Admin/Modify', compact('menuItem'));
+        return Inertia::render('Menu::Admin/AdminMenuModify', compact('menuItem'));
     }
 
     public function update(UpdateMenuRequest $request, $id)

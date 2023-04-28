@@ -1,8 +1,8 @@
 <template>
-    <h1>Управление страницами</h1>
+    <h1>Управление ролями</h1>
 
-    <inertia-link href="/admin/pages/create" v-if="$page.props.authUser.permissions.includes('pages-create')">
-        Создать новую страницу
+    <inertia-link href="/admin/roles/create" v-if="$page.props.authUser.permissions.includes('roles-create')">
+        Создать новую роль
     </inertia-link>
 
     <div>
@@ -11,8 +11,6 @@
             <tr>
                 <th>ID</th>
                 <th>Название</th>
-                <th>Slug</th>
-                <th>Статус</th>
                 <th>Создана</th>
                 <th>Обновлена</th>
                 <th>Операции</th>
@@ -23,25 +21,24 @@
         </table>
     </div>
 
+
 </template>
 
 <script>
-
-import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
+import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
+
 export default {
-    name: "Index",
+    name: "AdminRolesIndex",
     layout: AdminLayout,
     mounted() {
         $('#table').DataTable({
             serverSide: true,
             processing: true,
-            ajax: "/admin/pages",
+            ajax: "/admin/roles",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'title', name: 'title'},
-                {data: 'slug', name: 'slug'},
-                {data: 'is_active', name: 'is_active'},
+                {data: 'name', name: 'name'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
                 {data: 'actions', name: 'actions', orderable: false},

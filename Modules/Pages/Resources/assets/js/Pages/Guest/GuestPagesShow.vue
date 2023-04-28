@@ -17,7 +17,7 @@ import {replaceHtmlLinksToInertiaLinks, wrapTables, zoomImages} from "@/helpers"
 
 
 export default {
-    name: "Show",
+    name: "GuestPagesShow",
     layout: GuestLayout,
     props: {
         page: Object

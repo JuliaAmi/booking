@@ -45,7 +45,7 @@ import TinyEditor from "@/Share/Admin/TinyEditor.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 
 export default {
-    name: "Modify",
+    name: "AdminPagesModify",
     layout: AdminLayout,
     components: {
         TinyEditor

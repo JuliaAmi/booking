@@ -1,8 +1,8 @@
 <template>
-    <h1>Управление пользовтелями</h1>
+    <h1>Управление страницами</h1>
 
-    <inertia-link href="/admin/users/create" v-if="$page.props.authUser.permissions.includes('users-create')">
-        Создать нового пользователя
+    <inertia-link href="/admin/pages/create" v-if="$page.props.authUser.permissions.includes('pages-create')">
+        Создать новую страницу
     </inertia-link>
 
     <div>
@@ -10,10 +10,11 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>ФИО</th>
-                <th>Email</th>
-                <th>Создан</th>
-                <th>Обновлен</th>
+                <th>Название</th>
+                <th>Slug</th>
+                <th>Статус</th>
+                <th>Создана</th>
+                <th>Обновлена</th>
                 <th>Операции</th>
             </tr>
             </thead>
@@ -25,21 +26,22 @@
 </template>
 
 <script>
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
 
+import {replaceHtmlLinksToInertiaLinks} from "@/helpers";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
 export default {
-    name: "Index",
+    name: "AdminPagesIndex",
     layout: AdminLayout,
     mounted() {
         $('#table').DataTable({
             serverSide: true,
             processing: true,
-            ajax: "/admin/users",
+            ajax: "/admin/pages",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
+                {data: 'title', name: 'title'},
+                {data: 'slug', name: 'slug'},
+                {data: 'is_active', name: 'is_active'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'updated_at', name: 'updated_at'},
                 {data: 'actions', name: 'actions', orderable: false},
